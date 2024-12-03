@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace Celeste.Mod.QTShock;
+
 public class QTShockModule : EverestModule {
     public static QTShockModule Instance { get; private set; }
-
     public override Type SettingsType => typeof(QTShockModuleSettings);
     public static QTShockModuleSettings Settings => (QTShockModuleSettings) Instance._Settings;
-
     private static HttpClient client = new();
 
     public QTShockModule() {
@@ -69,7 +68,6 @@ public class QTShockModule : EverestModule {
                         "application/json"
                     )
                 };
-
                 request.Headers.Add("accept", "application/json");
                 request.Headers.Add("OpenShockToken", Settings.ApiKey);
                 request.Headers.Add("Content-Type", "application/json");
@@ -78,12 +76,12 @@ public class QTShockModule : EverestModule {
                 response.EnsureSuccessStatusCode();
 
                 // Optionally log success
-                Logger.Info($"OpenShock API request successful. Status: {response.StatusCode}");
+                Logger.Log($"OpenShock API request successful. Status: {response.StatusCode}");
             }
             catch (Exception ex)
             {
                 // Log the error
-                Logger.Error($"OpenShock API Error: {ex.Message}");
+                Logger.Log($"OpenShock API Error: {ex.Message}");
             }
         });
     }
