@@ -7,6 +7,10 @@ on:
       - Celeste/QTShockModuleSettings.cs
       - Celeste/QTShock.sln
       - Celeste/QTShock.csproj
+
+permissions:
+  contents: write  # This gives write access to repository contents, including releases
+
 jobs:
   build:
     runs-on: ubuntu-latest
