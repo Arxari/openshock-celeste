@@ -76,12 +76,12 @@ public class QTShockModule : EverestModule {
                 response.EnsureSuccessStatusCode();
 
                 // Optionally log success
-                Logger.Log(LogLevel.Info, $"OpenShock API request successful. Status: {response.StatusCode}");
+                Logger.Log(nameof(LogLevel.Info), $"OpenShock API request successful. Status: {response.StatusCode}");
             }
             catch (Exception ex)
             {
                 // Log the error
-                Logger.Log(LogLevel.Error, $"OpenShock API Error: {ex.Message}");
+                Logger.Log(nameof(LogLevel.Error), $"OpenShock API Error: {ex.Message}");
             }
         });
     }
